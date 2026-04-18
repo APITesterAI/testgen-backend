@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: testgen-backend
+    runtime: dotnet
+    region: oregon
+    plan: free
+    buildCommand: "dotnet publish TestGenApi/TestGenApi.csproj -c Release -o out"
+    startCommand: "dotnet out/TestGenApi.dll"
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:10000
